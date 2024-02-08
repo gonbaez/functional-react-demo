@@ -1,35 +1,30 @@
 import React from "react";
-import { useState } from "react";
+
+import { Route, Routes } from "react-router-dom";
+
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Error from "./pages/Error";
+import { Link } from "react-router-dom";
+import Nav from "./pages/Nav";
 
 const App = () => {
-  const [count, setCount] = useState(0); // This is a closure (!)
-
-  // This is the same:
-  // const myState = setCount(0);
-  // const count = myState[0];
-  // const setCount = myState[1];
-
-  // Everytime you use setCoung it re runs the App funciton.
-
-  const add = () => {
-    setCount(count + 1);
-  };
-
-  const minus = () => {
-    setCount(count - 1);
-  };
-
   return (
     <>
-      <button
-        onClick={() => {
-          setCount(count + 1);
-        }}
-      >
-        +
-      </button>
-      <button onClick={minus}>-</button>
-      <p>Count: {count}</p>
+      <div>
+        {/* <a href="/">Home</a>
+        <a href="about">About</a>
+        <a href="contact">Contact</a> */}
+        <Nav />
+      </div>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact/:country" element={<Contact />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
     </>
   );
 };
