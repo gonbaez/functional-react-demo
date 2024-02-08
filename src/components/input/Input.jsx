@@ -9,8 +9,7 @@ const Input = (props) => {
         <label htmlFor={name}>{name}</label>
         <select name={name} id={name} onInput={onUserInput}>
           {options.map((option) => {
-            console.log(option);
-            return <option value={option.value}>{option.label}</option>;
+            return <option value={option}>{option}</option>;
           })}
         </select>
         <p>{error}</p>
