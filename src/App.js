@@ -1,19 +1,35 @@
-// Bring in React
-import React, { Component } from "react";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Main from "./components/Main";
+import React from "react";
+import { useState } from "react";
 
-// Create a class component
 const App = () => {
+  const [count, setCount] = useState(0); // This is a closure (!)
+
+  // This is the same:
+  // const myState = setCount(0);
+  // const count = myState[0];
+  // const setCount = myState[1];
+
+  // Everytime you use setCoung it re runs the App funciton.
+
+  const add = () => {
+    setCount(count + 1);
+  };
+
+  const minus = () => {
+    setCount(count - 1);
+  };
+
   return (
     <>
-      <Header />
-      <p className="my-class">
-        I can also have normal HTML and JS operations {42 + 1}
-      </p>
-      <Main />
-      <Footer />
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +
+      </button>
+      <button onClick={minus}>-</button>
+      <p>Count: {count}</p>
     </>
   );
 };
