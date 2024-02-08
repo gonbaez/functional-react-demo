@@ -9,6 +9,8 @@ import Error from "./pages/Error";
 import { Link } from "react-router-dom";
 import Nav from "./pages/Nav";
 
+import Character from "./components/Character";
+
 const App = () => {
   return (
     <>
@@ -23,6 +25,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="contact/:country" element={<Contact />} />
+        <Route path="simpsons/:name" element={<Character />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </>
